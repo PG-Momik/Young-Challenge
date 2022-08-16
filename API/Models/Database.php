@@ -47,7 +47,19 @@ class Database
                 return false;
         }
     }
-
- 
+    
+    function getIdByName($name)
+    {
+        if ($this->table != "Sales") {
+            $query = "SELECT ID FROM {$this->table} WHERE name LIKE :name LIMIT 1";
+            $name = "%{$name}%";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam("name", $name);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['ID'];
+        }
+        return false;
+    }
 
 }
