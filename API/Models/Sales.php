@@ -6,9 +6,9 @@ class Sales extends Database
 {
     protected string $table = "Sales";
 
-    public function __construct()
+    public function __construct($dbPath)
     {
-        parent::__construct();
+        parent::__construct($dbPath);
         $this->createTable();
     }
 
