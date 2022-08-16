@@ -3,11 +3,12 @@
 
 class Database
 {
-    private string $DB_NAME = "../DB/PetroliumDB.db";
+    private string $DB_NAME = "/PetroliumDB.db";
     protected PDO $conn;
 
-    public function __construct()
+    public function __construct($dbPath)
     {
+        $this->DB_NAME =$dbPath.$this->DB_NAME;
         $this->connect();
     }
 
