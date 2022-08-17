@@ -38,12 +38,29 @@ switch ($_SERVER['REQUEST_METHOD']){
                         echo json_encode($result);
                         break;
                     case "winners":
-
+                        $num = 3;
+                        if(isset($keys[4])){
+                            $num = $keys[4];
+                        }
+                        $result  = $salesTable->getWinners($num);
+                        echo json_encode($result);
                         break;
                     case "losers":
-           
+                        $num = 3;
+                        if(isset($keys[4])){
+                            $num = $keys[4];
+                        }
+                        $result  = $salesTable->getLosers($num);
+                        echo json_encode($result);
                         break;
                     case "average":
+                        if(!isset($keys[4])){
+                            echo json_encode(array("Invalid URL format."));
+                            break;
+                        }
+                        $years = explode("-", $keys[4]);
+                        $result  = $salesTable->getAverage($years[0], $years[1]);
+                        echo json_encode($result);
 
                         break;
                     default:
