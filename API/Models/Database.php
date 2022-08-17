@@ -47,7 +47,32 @@ class Database
                 return false;
         }
     }
-    
+
+    function insert($country = null, $product = null, $sale = null): bool
+    {
+        $queries = [
+            "INSERT or IGNORE INTO {$this->table} (name) values (:name)",
+            "INSERT or IGNORE INTO {$this->table} (Petroleum_id, Country_id, Year, Sale) values (:pid, :cid, :year, :sale)"
+        ];
+        $params = array();
+        $activeQuery = '';
+
+        if (!is_null($country)) {
+            $params['name'] = $country;
+            $activeQuery = $queries[0];
+        }
+        if (!is_null($product)) {
+            $params['name'] = $product;
+            $activeQuery = $queries[0];
+        }
+        if (!is_null($sale)) {
+            $params = $sale;
+            $activeQuery = $queries[1];
+        }
+        $stmt = $this->conn->prepare($activeQuery);
+        return $stmt->execute($params) ?? false;
+    }
+
     function getIdByName($name)
     {
         if ($this->table != "Sales") {
