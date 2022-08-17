@@ -26,16 +26,21 @@ switch ($_SERVER['REQUEST_METHOD']){
                 $salesTable = new Sales('../DB');
                 switch ($operation){
                     case "all":
-
+                        $page = 1;
+                        if(isset($keys[4])){
+                            $page = $keys[4];
+                        }
+                        $result  = $salesTable->getAll(page:$page);
+                        echo json_encode($result);
                         break;
                     case "products":
-
+;
                         break;
                     case "winners":
 
                         break;
                     case "losers":
-
+           
                         break;
                     case "average":
 
