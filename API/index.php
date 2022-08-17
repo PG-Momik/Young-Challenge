@@ -34,7 +34,8 @@ switch ($_SERVER['REQUEST_METHOD']){
                         echo json_encode($result);
                         break;
                     case "products":
-;
+                        $result  = $salesTable->getTotalSalesByProducts();
+                        echo json_encode($result);
                         break;
                     case "winners":
 
