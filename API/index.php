@@ -14,8 +14,8 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type
 
 $url  =  $_SERVER['REQUEST_URI'];
 $keys = explode('/', $url);
-$entity = $keys[2];
-$operation = $keys[3];
+$entity = $keys[3];
+$operation = $keys[4];
 
 require_once 'Models/Sales.php';
 
@@ -27,8 +27,8 @@ switch ($_SERVER['REQUEST_METHOD']){
                 switch ($operation){
                     case "all":
                         $page = 1;
-                        if(isset($keys[4])){
-                            $page = $keys[4];
+                        if(isset($keys[5])){
+                            $page = $keys[5];
                         }
                         $result  = $salesTable->getAll(page:$page);
                         echo json_encode($result);
@@ -39,26 +39,26 @@ switch ($_SERVER['REQUEST_METHOD']){
                         break;
                     case "winners":
                         $num = 3;
-                        if(isset($keys[4])){
-                            $num = $keys[4];
+                        if(isset($keys[5])){
+                            $num = $keys[5];
                         }
                         $result  = $salesTable->getWinners($num);
                         echo json_encode($result);
                         break;
                     case "losers":
                         $num = 3;
-                        if(isset($keys[4])){
-                            $num = $keys[4];
+                        if(isset($keys[5])){
+                            $num = $keys[5];
                         }
                         $result  = $salesTable->getLosers($num);
                         echo json_encode($result);
                         break;
                     case "average":
-                        if(!isset($keys[4])){
+                        if(!isset($keys[5])){
                             echo json_encode(array("Invalid URL format."));
                             break;
                         }
-                        $years = explode("-", $keys[4]);
+                        $years = explode("-", $keys[5]);
                         $result  = $salesTable->getAverage($years[0], $years[1]);
                         echo json_encode($result);
 
