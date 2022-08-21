@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation</title>
+    <link rel="stylesheet" href="WebApp/assets/bootstrap.min.css">
+    <script src="WebApp/assets/bootstrap.min.js" defer></script>
+</head>
+<style>
+    .bold-this {
+        font-size: 1.2rem;
+        font-weight: 900;
+        color: #272727;
+        text-transform: uppercase;
+    }
+
+    .bold-this:hover {
+        color: #39adf5;
+    }
+</style>
+<body>
+<h1 class="bg-dark text-light py-3 px-3">Documentation:</h1>
+<section class="px-5">
+    <h2>Task 1: Call API and insert DB</h2>
+    <a href="script.php" class="bold-this">Click Here</a> to:
+    <ol>
+        <li>Run script.php</li>
+        <li>After running script, the api is called and the db is filled.</li>
+        <li>Note: The database already has one instance of dataset from the api call. (256 records)</li>
+        <li>Note 2: Check the Report Page -> <a href="./WebApp/index.php#imp-table">All Sales Table</a> caption to see
+            All entries. Ceil(All entries/256) is the number of times the api has been called.
+        </li>
+    </ol>
+    <hr>
+    <h2>Task 2: Normalize Database</h2>
+    <a href="./DB/PetroliumDB.db" class="bold-this">Click Here</a> to:
+    <ol>
+        <li>Download the SQLite database named PetroliumDB.db</li>
+        <li>You can now view the data through SLQLite Browser if you want.</li>
+    </ol>
+    <hr>
+    <h2>Task 3, 4, 5: Viewing Data</h2>
+    <a href="./WebApp/index.php" class="bold-this">Click Here</a> to:
+    <ol>
+        <li>List the total sale of each petroleum.</li>
+        <li>List the top 3 countries that have the highest and lowest total sales till date.</li>
+        <li>List average sale of each petroleum product for 4 years of interval.</li>
+        <li>List all records (not all at once, 15 at a time)</li>
+    </ol>
+    <hr>
+    <h2>**API Doc**</h2>
+    <b>Format: baseurl/API/entity/operation/final-parameter</b>
+    <br>
+    Endpoints for Sales:
+    <ol>
+        <li>Get All Sales
+            <ul>
+                <li><b>Syntax:</b> baseurl/API/sales/all/optional-page-number</li>
+                <li><b>Example:</b>
+                    <br>
+                    localhost/API/sales/all
+                    <br>
+                    localhost/API/sales/all/3
+                </li>
+
+            </ul>
+        </li>
+        <br>
+        <li>Get Total Sales By Products
+            <ul>
+                <li><b>Syntax:</b> baseurl/API/sales/products/no-page-number</li>
+                <li><b>Example:</b>localhost/API/sales/products
+                </li>
+            </ul>
+        </li>
+        <br>
+        <li>Get Top <i>'n'</i> Sellers
+            <ul>
+                <li><b>Syntax: </b> baseurl/API/sales/winners/optional-number-of-winners</li>
+                <li><b>Example:</b>
+                    <br>
+                    localhost/API/sales/winners
+                    <br>
+                    localhost/API/sales/winners/4
+                </li>
+
+            </ul>
+        </li>
+        <br>
+        <li>Get Bottom <i>'n'</i> Sellers
+            <ul>
+                <li><b>Syntax: </b> baseurl/API/sales/losers/optional-number-of-winners</li>
+                <li><b>Example:</b>
+                    <br>
+                    localhost/API/sales/losers
+                    <br>
+                    localhost/API/sales/losers/4
+                </li>
+            </ul>
+        </li>
+        <br>
+        <li>Get Average in <i>'n year'</i> Interval
+            <ul>
+                <li><b>Syntax:</b> baseurl/API/entity/operation/compulsory-parameter</li>
+                <li><b>Example:</b>
+                    <b`r>
+                    localhost/API/entity/operation/2007-2010
+                    <br>
+                    localhost/API/entity/operation/2010-2014
+                </li>
+            </ul>
+        </li>
+    </ol>
+</section>
+</body>
+</html>
