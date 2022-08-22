@@ -1,31 +1,40 @@
 # Petroleum Report Generation
 - Web Application
 
-## Accessing the Web App through:
+# Accessing the Web App through:
 ## Docker 
 - ```
-  docker pull momik88/momik-challenge-image
-  docker run -it --rm -d -p 8000:80 --name momik-challenge-container momik-challenge-image
-  ```
-- Now visit https://localhost/8000
+  docker pull momik88/momik-challenge-working
+  ```  
+- Run a container on port ' *xyz* '
+- Now visit https://localhost:xyz
+- API doesn't work locally using this method(I couldnt setup apache configs properly)
 
 ## XAMPP
 - Download a  copy this repository
 - Unzip and paste into htdocs
 - Now visit https://localhost/Challenge
+- API works, at https://localhost/Challenge/API/additional-params
 
 ## The php -S localhost way
-- Download a copy this repository
-- Unzip and paste in a folder say '*folder_X*', such that 'folder_X' is the parent parent the unzipped 'Challenge' folder
-- ```
-  php -S localhost:port_number ./
-  ```
-- Now visit https://localhost:port_number
+- ### Requirements:
+  - Machine with well configured apache, php8.0 or higher and php-pdo-mysql driver
+- ### Steps
+  - Download a copy this repository
+  - Unzip and paste in a folder say ' *folder_X* ', such that ' *folder_X* ' is the parent ofthe unzipped ' *Challenge* ' folder
+  - ```
+    php -S localhost:port-number ./
+    ```
+  - Now visit https://localhost:port-number/Challenge
+  - API works, at https://localhost:port-number/Challenge/API/additional-params
 
-## Accessing the API
-- Download and Read the <u><b>index.html</b></u>file for API documentation.
-- Find the publicly hosted API at base url: {i will inset 00webhost url here}
-
-## Requirements
-- Machine with apache and php8.0 or higher
-- Machine with php-pdo-mysql driver
+# Accessing the hosted 
+- ### Documentation (baseURl) : https://youngchallenge.000webhostapp.com/
+- ### Web App
+    - baseUrl/WebApp
+- ### API
+    - baseUrl/API/additional-params
+- ### DB
+    - baseURl/DB/PetroliumDB.db    
+- ### API calling script
+    - baseURL/script.php
