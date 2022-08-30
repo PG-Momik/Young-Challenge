@@ -3,7 +3,7 @@
 
 # Accessing the Web App through:
 ## Docker 
-- ```
+  ```
   docker pull momik88/momik-challenge-working
   ```  
 - Run a container on port ' *xyz* '
